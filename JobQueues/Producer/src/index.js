@@ -15,14 +15,14 @@ app.get('/', (ctx, res) => {
 
 app.post("/order", async (request, response) => {
     await createNewOrder(request.body);
-    request.body = {
+    let resposeBody = {
         status: "OK",
         data: {
             msg: "Order processed succsessfully!",
             order: request.body,
         }
     }
-    response.send(request.body)
+    response.send(resposeBody)
 })
 
 app.listen(3000, (err) => {
